@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.6"
+
+# all services are contained in the docker container
+services:
+  - docker
+
+# install docker-compose to be able to run commands
+before_script: pip install docker-compose
+
+# if this fails to build this will
+script:
+  - docker-compose run app sh -c "python manage.py test && flake8"
+
